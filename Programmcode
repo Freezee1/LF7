@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 import time
-
-DEVICE_PATH = "/sys/bus/w1/devices/28-0000074b57ed/w1_slave"
-
+ 
+from Adafruit_IO import Client
+ 
+aio = Client('Fisi24A', 'aio_Key')
+ 
+DEVICE_PATH = "/sys/bus/w1/devices/28-eb99c5356461/w1_slave"
+ 
 while True:
-    time.sleep(2)
-
-    with open(DEVICE_PATH, "r") as f:
-        inhalt = f.read()
-
-    if "YES" not in inhalt.splitlines()[0]:
-        continue
-
-    tempdata = inhalt.split("\n")[1].split(" ")[9]
-    temperatur = float(tempdata[2:]) / 1000
-
-    print(f"Temperatur beträgt: {temperatur:.3f} °C")
+        time.sleep(5)
+        with open(DEVICE_PATH, "r") as f:
+                inhalt = f.read()
+        if "YES" not in inhalt.splitlines()[0]:
+                continue
+        tempdata = inhalt.split("\n")[1].split(" ")[9]
+        temperatur = float(tempdata[2:]) / 1000
+        print(f"Temperatur betr  gt: {temperatur:.3f}   C")
+ 
+        aio.send('temperaturmessdaten-serverraum2', temperatur)
