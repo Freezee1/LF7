@@ -2,3 +2,4 @@ Im Rahmen dieses Projektes wurde ein Python-Programm entwickelt, das die Tempera
 
 Der Sensor wird über das 1-Wire-System angesprochen. Der Raspberry Pi stellt die Sensordaten im Linux-Dateisystem unter /sys/bus/w1/devices/ bereit. 
  Das Python-Programm liest diese Datei aus, überprüft die Gültigkeit der Messung und gibt die Temperatur formatiert in Grad Celsius aus. 
+<img width="481" height="477" alt="LF7 Fertige Abgabe" src="https://github.com/user-attachments/assets/53363095-9708-4c0a-b395-992e72f54ed8" />
